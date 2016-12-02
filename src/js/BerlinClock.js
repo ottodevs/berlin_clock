@@ -26,12 +26,21 @@ var BerlinClock = {
   },
 
   updateMinutes: function (minute) {
-
+    if (minute > 5) {
+      $(`#minutesOfFive > div:nth-child(${Math.floor(minute / 5)})`).addClass('yellow')
+      this.updateMinutes(minute - 5)
+    } else if (minute > 0) {
+      $(`#minutesOfOne > div:nth-child(${minute})`).addClass('yellow')
+      this.updateMinutes(minute - 1)
+    } else {
+      return
+    }
   },
 
   updateClock: function (hour, minute, second) {
     this.reset()
     this.updateSeconds(second)
+    this.updateMinutes(minute)
     this.updateHours(hour)
   },
 
