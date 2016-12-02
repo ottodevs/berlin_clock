@@ -10,9 +10,11 @@ var BerlinClock = {
 
     this.updateClock(hour, minute, second)
   },
+
   updateSeconds: function (second) {
     $('#seconds>div').toggleClass('yellow')
   },
+
   updateHours: function (hour) {
     if (hour > 5) {
       $(`#hoursOfFive > div:nth-child(${Math.floor(hour / 5)})`).addClass('red')
