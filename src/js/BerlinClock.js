@@ -14,7 +14,15 @@ var BerlinClock = {
     $('#seconds>div').toggleClass('yellow')
   },
   updateHours: function (hour) {
-
+    if (hour > 5) {
+      $(`#hoursOfFive > div:nth-child(${Math.floor(hour / 5)})`).addClass('red')
+      this.updateHours(hour - 5)
+    } else if (hour > 0) {
+      $(`#hoursOfOne > div:nth-child(${hour})`).addClass('red')
+      this.updateHours(hour - 1)
+    } else {
+      return
+    }
   },
 
   updateMinutes: function (minute) {
@@ -24,6 +32,7 @@ var BerlinClock = {
   updateClock: function (hour, minute, second) {
     this.reset()
     this.updateSeconds(second)
+    this.updateHours(hour)
   },
 
   reset: function () {
