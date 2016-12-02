@@ -27,7 +27,9 @@ var BerlinClock = {
 
   updateMinutes: function (minute) {
     if (minute > 5) {
-      $(`#minutesOfFive > div:nth-child(${Math.floor(minute / 5)})`).addClass('yellow')
+      var divToColor = Math.floor(minute / 5)
+      $(`#minutesOfFive > div:nth-child(${divToColor})`).addClass(
+        !(divToColor % 3) ? 'red' : 'yellow')
       this.updateMinutes(minute - 5)
     } else if (minute > 0) {
       $(`#minutesOfOne > div:nth-child(${minute})`).addClass('yellow')
