@@ -26,7 +26,7 @@ var BerlinClock = {
   },
 
   updateMinutes: function (minute) {
-    if (minute > 5) {
+    if (minute > 4) {
       var divToColor = Math.floor(minute / 5)
       $(`#minutesOfFive > div:nth-child(${divToColor})`).addClass(
         !(divToColor % 3) ? 'red' : 'yellow')
